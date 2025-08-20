@@ -4,39 +4,38 @@ import { Download, ChevronDown, MapPin, Calendar, Trophy } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import TypingText from "@/components/TypingText";
 import ScrollAnimation from "@/components/ScrollAnimation";
-import SkillBar from "@/components/SkillBar";
+import TechSkills from "@/components/TechSkills";
 import ProjectCard from "@/components/ProjectCard";
 import ExperienceTimeline from "@/components/ExperienceTimeline";
 import ContactForm from "@/components/ContactForm";
 
 // Import project images
 import wabiRideImage from "@/assets/wabi-ride-mockup.jpg";
-import winDrawLoseImage from "@/assets/win-draw-lose-mockup.jpg";
+import winDrawLoseImage from "@/assets/win-draw-lose-updated.jpg";
 import beGoodImage from "@/assets/be-good-mockup.jpg";
-import victorProfileImage from "@/assets/victor-profile.jpg";
+import aftechImage from "@/assets/aftech-lky7bet.jpg";
+import lupImage from "@/assets/lup-yipeebet.jpg";
+import victorProfileImage from "@/assets/victor-updated-profile.jpg";
 
 const Index = () => {
   const scrollToProjects = () => {
     document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
   };
 
-  const skills = [
-    { name: "Flutter & Dart", percentage: 95 },
-    { name: "JavaScript", percentage: 85 },
-    { name: "HTML & CSS", percentage: 90 },
-    { name: "QA Testing", percentage: 92 },
-    { name: "Project Management", percentage: 88 },
-    { name: "WordPress", percentage: 80 },
-    { name: "Microsoft Excel", percentage: 95 },
-    { name: "Video Editing", percentage: 75 },
-  ];
 
   const projects = [
     {
-      title: "Wabi Ride",
-      description: "A comprehensive ride-hailing application with real-time tracking, payment integration, and admin dashboard. Built with Flutter for mobile and web technologies for the admin panel.",
-      image: wabiRideImage,
-      technologies: ["Flutter", "Dart", "Web Development", "QA Testing"],
+      title: "AFTECH (LKY7BET)",
+      description: "Gaming platform with sports betting, casino games, and live gaming features. Led QA testing and product management for successful launches with comprehensive testing protocols.",
+      image: aftechImage,
+      technologies: ["QA Testing", "Product Management", "Gaming Platform"],
+      liveUrl: "#",
+    },
+    {
+      title: "Lup Investment (YipeeBet)",
+      description: "Investment and gaming platform with aviator games and betting features. Performed comprehensive manual testing ensuring platform reliability and user experience optimization.",
+      image: lupImage,
+      technologies: ["Manual Testing", "Quality Assurance", "Platform Testing"],
       liveUrl: "#",
     },
     {
@@ -44,6 +43,13 @@ const Index = () => {
       description: "Sports prediction platform focusing on football matches with advanced analytics, user statistics, and prediction tracking. Currently in active development.",
       image: winDrawLoseImage,
       technologies: ["Flutter", "Dart", "Sports Analytics", "QA Testing"],
+      liveUrl: "#",
+    },
+    {
+      title: "Wabi Ride",
+      description: "A comprehensive ride-hailing application with real-time tracking, payment integration, and admin dashboard. Built with Flutter for mobile and web technologies for the admin panel.",
+      image: wabiRideImage,
+      technologies: ["Flutter", "Dart", "Web Development", "QA Testing"],
       liveUrl: "#",
     },
     {
@@ -248,39 +254,7 @@ const Index = () => {
             </div>
           </ScrollAnimation>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            <div>
-              <ScrollAnimation>
-                <h3 className="font-poppins font-semibold text-2xl mb-8 text-primary">Technical Skills</h3>
-              </ScrollAnimation>
-              <div className="space-y-4">
-                {skills.slice(0, 4).map((skill, index) => (
-                  <SkillBar
-                    key={skill.name}
-                    skill={skill.name}
-                    percentage={skill.percentage}
-                    delay={index * 100}
-                  />
-                ))}
-              </div>
-            </div>
-
-            <div>
-              <ScrollAnimation>
-                <h3 className="font-poppins font-semibold text-2xl mb-8 text-primary">Additional Skills</h3>
-              </ScrollAnimation>
-              <div className="space-y-4">
-                {skills.slice(4).map((skill, index) => (
-                  <SkillBar
-                    key={skill.name}
-                    skill={skill.name}
-                    percentage={skill.percentage}
-                    delay={index * 100 + 400}
-                  />
-                ))}
-              </div>
-            </div>
-          </div>
+          <TechSkills />
         </div>
       </section>
 
