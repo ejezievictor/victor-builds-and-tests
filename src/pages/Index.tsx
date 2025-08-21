@@ -11,11 +11,11 @@ import ContactForm from "@/components/ContactForm";
 
 // Import project images
 import wabiRideImage from "@/assets/wabi-ride-mockup.jpg";
-import winDrawLoseImage from "@/assets/win-draw-lose-updated.jpg";
+import winDrawLoseImage from "@/assets/win-draw-lose-real.jpg";
 import beGoodImage from "@/assets/be-good-mockup.jpg";
 import aftechImage from "@/assets/aftech-lky7bet.jpg";
 import lupImage from "@/assets/lup-yipeebet.jpg";
-import victorProfileImage from "@/assets/victor-updated-profile.jpg";
+import victorProfileImage from "@/assets/victor-profile-real.jpg";
 
 const Index = () => {
   const scrollToProjects = () => {
