@@ -1,47 +1,34 @@
 import { useState } from "react";
+import { useForm } from "@formspree/react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Mail, Phone, Linkedin, Github, Send } from "lucide-react";
+import { Mail, Phone, Linkedin, Github, Send, CheckCircle } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import ScrollAnimation from "./ScrollAnimation";
 
 const ContactForm = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: ""
-  });
+  const [state, handleSubmit] = useForm("xgveqjaz"); // You'll need to replace this with your Formspree form ID
   const { toast } = useToast();
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    // Create mailto link with form data
-    const subject = encodeURIComponent(`Portfolio Contact from ${formData.name}`);
-    const body = encodeURIComponent(
-      `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+  if (state.succeeded) {
+    return (
+      <ScrollAnimation>
+        <Card className="bg-card/50 backdrop-blur-sm border-border/50 text-center p-8">
+          <div className="flex flex-col items-center space-y-4">
+            <div className="w-16 h-16 bg-green-500/10 rounded-full flex items-center justify-center">
+              <CheckCircle className="w-8 h-8 text-green-500" />
+            </div>
+            <h3 className="font-poppins text-xl font-semibold">Message Sent!</h3>
+            <p className="text-muted-foreground font-inter">
+              Thank you for reaching out. I'll get back to you soon!
+            </p>
+          </div>
+        </Card>
+      </ScrollAnimation>
     );
-    const mailtoLink = `mailto:ejezievictor7@gmail.com?subject=${subject}&body=${body}`;
-    
-    // Open default email client
-    window.location.href = mailtoLink;
-    
-    toast({
-      title: "Opening Email Client",
-      description: "Your default email app will open with the message pre-filled.",
-    });
-    
-    setFormData({ name: "", email: "", message: "" });
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData(prev => ({
-      ...prev,
-      [e.target.name]: e.target.value
-    }));
-  };
+  }
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -117,8 +104,6 @@ const ContactForm = () => {
                 <Input
                   name="name"
                   placeholder="Your Name"
-                  value={formData.name}
-                  onChange={handleChange}
                   required
                   className="bg-background/50 border-border focus:border-primary"
                 />
@@ -129,8 +114,6 @@ const ContactForm = () => {
                   name="email"
                   type="email"
                   placeholder="Your Email"
-                  value={formData.email}
-                  onChange={handleChange}
                   required
                   className="bg-background/50 border-border focus:border-primary"
                 />
@@ -140,18 +123,26 @@ const ContactForm = () => {
                 <Textarea
                   name="message"
                   placeholder="Your Message"
-                  value={formData.message}
-                  onChange={handleChange}
                   required
                   rows={4}
                   className="bg-background/50 border-border focus:border-primary resize-none"
                 />
               </div>
               
-              <Button type="submit" className="w-full">
+              <Button 
+                type="submit" 
+                disabled={state.submitting}
+                className="w-full"
+              >
                 <Send className="w-4 h-4 mr-2" />
-                Send Message
+                {state.submitting ? "Sending..." : "Send Message"}
               </Button>
+              
+              {state.errors && Object.keys(state.errors).length > 0 && (
+                <div className="text-red-500 text-sm mt-2">
+                  Please fix the errors above and try again.
+                </div>
+              )}
             </form>
           </CardContent>
         </Card>

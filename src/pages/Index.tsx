@@ -249,13 +249,19 @@ const Index = () => {
       </section>
 
       {/* Skills Section */}
-      <section id="skills" className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section id="skills" className="py-20 bg-gradient-to-br from-card/10 to-primary/5 relative overflow-hidden">
+        <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <ScrollAnimation>
-            <div className="text-center mb-16">
-              <h2 className="font-poppins font-bold text-4xl mb-4 gradient-text">Skills & Expertise</h2>
-              <p className="text-muted-foreground text-lg font-inter max-w-2xl mx-auto">
-                Technologies and tools I use to bring ideas to life
+            <div className="text-center mb-20">
+              <div className="inline-block">
+                <h2 className="font-poppins font-bold text-5xl mb-6 gradient-text relative">
+                  Skills & Expertise
+                  <div className="absolute -inset-2 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-2xl blur-xl -z-10 animate-pulse"></div>
+                </h2>
+              </div>
+              <p className="text-muted-foreground text-xl font-inter max-w-3xl mx-auto leading-relaxed">
+                Technologies and tools I masterfully wield to transform ideas into exceptional digital experiences
               </p>
             </div>
           </ScrollAnimation>

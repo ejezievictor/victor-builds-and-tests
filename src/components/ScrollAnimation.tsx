@@ -20,8 +20,8 @@ const ScrollAnimation = ({ children, className = "", delay = 0 }: ScrollAnimatio
         }
       },
       {
-        threshold: 0.1,
-        rootMargin: "-50px"
+        threshold: 0.05,
+        rootMargin: "-20px"
       }
     );
 
