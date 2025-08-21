@@ -15,21 +15,21 @@ const TechSkills = () => {
       icon: Globe,
       color: "from-green-500/20 to-emerald-500/20",
       iconColor: "text-green-400",
-      skills: ["JavaScript", "HTML5", "CSS3", "React", "Responsive Design"]
+      skills: ["JavaScript", "HTML5", "CSS3", "WordPress", "Responsive Design"]
     },
     {
       title: "Development Tools",
       icon: Code,
       color: "from-purple-500/20 to-pink-500/20",
       iconColor: "text-purple-400",
-      skills: ["Git", "VS Code", "Android Studio", "Figma", "API Integration"]
+      skills: ["Git", "VS Code", "Android Studio", "Figma", "Video Editing"]
     },
     {
       title: "Data & Analytics",
       icon: Database,
       color: "from-orange-500/20 to-red-500/20",
       iconColor: "text-orange-400",
-      skills: ["Excel Advanced", "VLOOKUP", "Pivot Tables", "Data Analysis", "Reporting"]
+      skills: ["Excel Advanced", "VLOOKUP", "Pivot Tables", "Reporting"]
     },
     {
       title: "Quality Assurance",
