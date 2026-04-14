@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Download, ChevronDown, MapPin, Calendar, Trophy, Award, Briefcase, Code2, CheckCircle2 } from "lucide-react";
+import { Download, ChevronDown, MapPin, Calendar, Trophy, Award, Briefcase, Code2, CheckCircle2, Star, Quote } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import TypingText from "@/components/TypingText";
 import ScrollAnimation from "@/components/ScrollAnimation";
@@ -14,6 +14,7 @@ import ScrollProgress from "@/components/ScrollProgress";
 import BackToTop from "@/components/BackToTop";
 import LoadingScreen from "@/components/LoadingScreen";
 import FloatingIcons from "@/components/FloatingIcons";
+import TerminalWindow from "@/components/TerminalWindow";
 import { useState } from "react";
 
 import wabiRideImage from "@/assets/wabi-ride-mockup.jpg";
@@ -42,35 +43,52 @@ const Index = () => {
       description: "Sports prediction platform focused on football analytics, user statistics, and match prediction tracking. Currently in active development.",
       image: winDrawLoseImage,
       technologies: ["Flutter", "Dart", "Firebase", "QA Testing", "Appium"],
-      liveUrl: "",
     },
     {
       title: "AFTECH (LKY7BET)",
       description: "High-traffic gaming platform with sports betting, casino games, and live gaming. Led QA testing and product management for successful launches.",
       image: aftechImage,
       technologies: ["QA Testing", "Product Management", "Jira", "API Testing"],
-      liveUrl: "",
     },
     {
       title: "Lup Investment (YipeeBet)",
       description: "Investment and gaming platform with aviator games and betting features. Comprehensive manual and API testing ensuring platform reliability.",
       image: lupImage,
       technologies: ["Manual Testing", "API Testing", "Postman", "Jira"],
-      liveUrl: "",
     },
     {
       title: "Wabi Ride",
       description: "Full ride-hailing app with real-time GPS tracking, payment integration, and admin dashboard. Built with Flutter, fully QA tested on Android and iOS.",
       image: wabiRideImage,
       technologies: ["Flutter", "Dart", "Firebase", "Google Maps API", "QA Testing"],
-      liveUrl: "https://github.com/ejezievictor/in-ride",
+      githubUrl: "https://github.com/ejezievictor/in-ride",
     },
     {
       title: "Be Good App",
       description: "Wellness and productivity app helping users build better habits through intuitive design, goal tracking, and motivational features.",
       image: beGoodImage,
       technologies: ["Flutter", "Dart", "Firebase"],
-      liveUrl: "",
+    },
+  ];
+
+  const testimonials = [
+    {
+      quote: "Victor's QA coverage was thorough and methodical. His automation framework consistently caught regressions that would have gone straight to production.",
+      name: "Team Lead",
+      role: "AFTECH",
+      stars: 5,
+    },
+    {
+      quote: "Working with Victor as both Flutter developer and QA lead meant we shipped a stable, polished product on time. He genuinely understands the full product lifecycle.",
+      name: "Co-founder",
+      role: "Wabi Ride",
+      stars: 5,
+    },
+    {
+      quote: "Victor bridges development and quality assurance perfectly. He doesn't just file bug reports — he understands root causes and works directly with engineers to fix them.",
+      name: "Product Manager",
+      role: "Win Draw Lose",
+      stars: 5,
     },
   ];
 
@@ -151,72 +169,83 @@ const Index = () => {
         <div className="orb-2 absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full pointer-events-none"
           style={{ background: "radial-gradient(circle, hsl(270 100% 65% / 0.08), transparent 70%)", filter: "blur(40px)" }} />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-16 w-full">
-          <div className="text-center max-w-4xl mx-auto">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-24 pb-8 w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
-            <ScrollAnimation>
-              <div className="inline-block mb-4 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/5 text-primary text-sm font-inter">
-                👋 Available for QA Engineer roles
-              </div>
-            </ScrollAnimation>
+            {/* Left: text content */}
+            <div className="text-center lg:text-left">
+              <ScrollAnimation>
+                <div className="inline-block mb-4 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/5 text-primary text-sm font-inter">
+                  👋 Available for QA Engineer roles
+                </div>
+              </ScrollAnimation>
 
-            <ScrollAnimation delay={100}>
-              <h1 className="font-poppins font-bold text-5xl sm:text-6xl lg:text-8xl mb-6 leading-tight">
-                <span className="text-foreground">Hi, I'm </span>
-                <span className="shimmer-text">Victor Ejezie</span>
-              </h1>
-            </ScrollAnimation>
+              <ScrollAnimation delay={100}>
+                <h1 className="font-poppins font-bold text-5xl sm:text-6xl lg:text-7xl mb-6 leading-tight">
+                  <span className="text-foreground">Hi, I'm </span>
+                  <br />
+                  <span className="shimmer-text">Victor Ejezie</span>
+                </h1>
+              </ScrollAnimation>
 
-            <ScrollAnimation delay={300}>
-              <div className="text-xl sm:text-2xl lg:text-3xl text-muted-foreground mb-8 font-inter h-16 flex items-center justify-center">
-                <TypingText
-                  text="Building Beautiful Apps. Breaking Bugs. Driving Quality."
-                  speed={50}
-                  className="font-medium"
-                />
-              </div>
-            </ScrollAnimation>
+              <ScrollAnimation delay={300}>
+                <div className="text-xl sm:text-2xl text-muted-foreground mb-6 font-inter flex items-center justify-center lg:justify-start">
+                  <TypingText
+                    text="Building Apps. Breaking Bugs. Driving Quality."
+                    speed={50}
+                    className="font-medium"
+                  />
+                </div>
+              </ScrollAnimation>
 
-            <ScrollAnimation delay={500}>
-              <p className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto font-inter leading-relaxed">
-                QA Engineer specializing in manual & automation testing, API testing,
-                and mobile development with Flutter. 3 years shipping reliable software
-                across gaming, sports prediction, and ride-hailing products.
-              </p>
-            </ScrollAnimation>
+              <ScrollAnimation delay={500}>
+                <p className="text-base text-muted-foreground mb-10 font-inter leading-relaxed">
+                  QA Engineer specializing in manual & automation testing, API testing,
+                  and mobile development with Flutter. 3 years shipping reliable software
+                  across gaming, sports prediction, and ride-hailing products.
+                </p>
+              </ScrollAnimation>
 
-            <ScrollAnimation delay={700}>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
-                <Button
-                  size="lg"
-                  onClick={scrollToProjects}
-                  className="relative overflow-hidden bg-primary text-background px-8 py-3 text-lg font-medium group"
-                >
-                  <span className="relative z-10">View My Work</span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-primary to-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </Button>
-                <Button size="lg" variant="outline"
-                  className="border-primary/40 hover:border-primary text-foreground hover:text-primary px-8 py-3 text-lg font-medium hover:bg-primary/5 transition-all duration-300"
-                  asChild
-                >
-                  <a href="/Victor_Ejezie_CV.pdf" download="Victor_Ejezie_CV.pdf">
-                    <Download className="w-5 h-5 mr-2" />
-                    Download CV
-                  </a>
-                </Button>
-              </div>
-            </ScrollAnimation>
+              <ScrollAnimation delay={700}>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center mb-12">
+                  <Button
+                    size="lg"
+                    onClick={scrollToProjects}
+                    className="relative overflow-hidden bg-primary text-background px-8 py-3 text-base font-medium group w-full sm:w-auto"
+                  >
+                    <span className="relative z-10">View My Work</span>
+                    <div className="absolute inset-0 bg-gradient-to-r from-primary to-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  </Button>
+                  <Button size="lg" variant="outline"
+                    className="border-primary/40 hover:border-primary text-foreground hover:text-primary px-8 py-3 text-base font-medium hover:bg-primary/5 transition-all duration-300 w-full sm:w-auto"
+                    asChild
+                  >
+                    <a href="/Victor_Ejezie_CV.pdf" download="Victor_Ejezie_CV.pdf">
+                      <Download className="w-5 h-5 mr-2" />
+                      Download CV
+                    </a>
+                  </Button>
+                </div>
+              </ScrollAnimation>
 
-            {/* Stats row */}
-            <ScrollAnimation delay={900}>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl mx-auto">
-                {stats.map((stat, i) => (
-                  <div key={i} className="stat-card">
-                    <stat.icon className="w-5 h-5 text-primary mx-auto mb-2" />
-                    <div className="text-3xl font-poppins font-bold shimmer-text">{stat.value}</div>
-                    <div className="text-xs text-muted-foreground font-inter mt-1">{stat.label}</div>
-                  </div>
-                ))}
+              {/* Stats row */}
+              <ScrollAnimation delay={900}>
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                  {stats.map((stat, i) => (
+                    <div key={i} className="stat-card">
+                      <stat.icon className="w-5 h-5 text-primary mx-auto mb-2" />
+                      <div className="text-2xl font-poppins font-bold shimmer-text">{stat.value}</div>
+                      <div className="text-xs text-muted-foreground font-inter mt-1">{stat.label}</div>
+                    </div>
+                  ))}
+                </div>
+              </ScrollAnimation>
+            </div>
+
+            {/* Right: terminal window */}
+            <ScrollAnimation delay={400}>
+              <div className="hidden lg:block">
+                <TerminalWindow />
               </div>
             </ScrollAnimation>
 
@@ -392,6 +421,55 @@ const Index = () => {
                     </Card>
                   </div>
                 </a>
+              </ScrollAnimation>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── TESTIMONIALS ────────────────────────────────────── */}
+      <section className="py-24 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/3 to-secondary/3" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+          <ScrollAnimation>
+            <div className="text-center mb-16">
+              <h2 className="font-poppins font-bold text-4xl mb-4 section-title gradient-text">What People Say</h2>
+              <p className="text-muted-foreground text-lg font-inter max-w-2xl mx-auto mt-6">
+                Feedback from colleagues and collaborators
+              </p>
+            </div>
+          </ScrollAnimation>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {testimonials.map((t, i) => (
+              <ScrollAnimation key={i} delay={i * 150}>
+                <div className="group relative h-full">
+                  <div className="absolute -inset-0.5 bg-gradient-to-r from-primary to-secondary rounded-xl opacity-0 group-hover:opacity-40 blur transition-opacity duration-500" />
+                  <Card className="relative bg-card/50 backdrop-blur-sm border-border/50 h-full group-hover:border-primary/30 transition-all duration-300">
+                    <CardContent className="p-6 flex flex-col h-full">
+                      {/* Stars */}
+                      <div className="flex gap-1 mb-4">
+                        {Array.from({ length: t.stars }).map((_, s) => (
+                          <Star key={s} className="w-4 h-4 fill-primary text-primary" />
+                        ))}
+                      </div>
+
+                      {/* Quote icon */}
+                      <Quote className="w-8 h-8 text-primary/20 mb-3 shrink-0" />
+
+                      {/* Quote text */}
+                      <p className="text-muted-foreground font-inter leading-relaxed text-sm flex-1 italic">
+                        "{t.quote}"
+                      </p>
+
+                      {/* Attribution */}
+                      <div className="mt-6 pt-4 border-t border-border/40">
+                        <div className="font-poppins font-semibold text-foreground text-sm">{t.name}</div>
+                        <div className="text-primary text-xs font-inter mt-0.5">{t.role}</div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
               </ScrollAnimation>
             ))}
           </div>

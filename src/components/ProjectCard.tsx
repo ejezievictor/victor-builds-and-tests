@@ -2,7 +2,7 @@ import { useRef, MouseEvent } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, Github } from "lucide-react";
+import { ExternalLink, Github, Lock } from "lucide-react";
 import ScrollAnimation from "./ScrollAnimation";
 
 interface ProjectCardProps {
@@ -115,12 +115,20 @@ const ProjectCard = ({
                 </Button>
               )}
               {githubUrl && (
-                <Button size="sm" variant="outline" className="flex-1" asChild>
+                <Button size="sm" variant="outline"
+                  className="flex-1 border-border/50 hover:border-primary/40 hover:text-primary transition-all duration-300"
+                  asChild>
                   <a href={githubUrl} target="_blank" rel="noopener noreferrer">
                     <Github className="w-4 h-4 mr-2" />
-                    Code
+                    View Code
                   </a>
                 </Button>
+              )}
+              {!liveUrl && !githubUrl && (
+                <div className="flex items-center gap-2 px-3 py-1.5 rounded-md border border-border/40 bg-muted/30 text-muted-foreground text-xs font-inter w-full justify-center">
+                  <Lock className="w-3 h-3" />
+                  Private Repository
+                </div>
               )}
             </div>
           </CardContent>
