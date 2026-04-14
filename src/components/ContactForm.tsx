@@ -56,13 +56,13 @@ const ContactForm = () => {
             </a>
             
             <a 
-              href="tel:+2348146441248"
+              href="tel:+2349013240953"
               className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors group"
             >
               <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center group-hover:bg-primary/20 transition-colors">
                 <Phone className="w-5 h-5 text-primary" />
               </div>
-              <span className="font-inter">+234 814 644 1248</span>
+              <span className="font-inter">+234 901 324 0953</span>
             </a>
             
             <a 
