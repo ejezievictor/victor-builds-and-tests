@@ -10,6 +10,11 @@ import ExperienceTimeline from "@/components/ExperienceTimeline";
 import ContactForm from "@/components/ContactForm";
 import Particles from "@/components/Particles";
 import CustomCursor from "@/components/CustomCursor";
+import ScrollProgress from "@/components/ScrollProgress";
+import BackToTop from "@/components/BackToTop";
+import LoadingScreen from "@/components/LoadingScreen";
+import FloatingIcons from "@/components/FloatingIcons";
+import { useState } from "react";
 
 import wabiRideImage from "@/assets/wabi-ride-mockup.jpg";
 import winDrawLoseImage from "@/assets/win-draw-lose-real.jpg";
@@ -19,6 +24,8 @@ import lupImage from "@/assets/lup-yipeebet.jpg";
 import victorProfileImage from "@/assets/victor-profile-real.jpg";
 
 const Index = () => {
+  const [loaded, setLoaded] = useState(false);
+
   const scrollToProjects = () =>
     document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
 
@@ -126,13 +133,17 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      {!loaded && <LoadingScreen onDone={() => setLoaded(true)} />}
       <CustomCursor />
+      <ScrollProgress />
+      <BackToTop />
       <Navigation />
 
       {/* ── HERO ────────────────────────────────────────────── */}
       <section id="hero" className="min-h-screen flex items-center relative overflow-hidden bg-grid">
         {/* Particle canvas */}
         <Particles />
+        <FloatingIcons />
 
         {/* Animated orbs */}
         <div className="orb-1 absolute top-1/4 left-1/4 w-96 h-96 rounded-full pointer-events-none"
@@ -188,7 +199,7 @@ const Index = () => {
                   className="border-primary/40 hover:border-primary text-foreground hover:text-primary px-8 py-3 text-lg font-medium hover:bg-primary/5 transition-all duration-300"
                   asChild
                 >
-                  <a href="https://drive.google.com/uc?export=download&id=10gwo3RyC_6MaLpbnv4s3inp6yD_vu8gB" download="Victor_Ejezie_CV.pdf">
+                  <a href="/Victor_Ejezie_CV.pdf" download="Victor_Ejezie_CV.pdf">
                     <Download className="w-5 h-5 mr-2" />
                     Download CV
                   </a>
