@@ -61,7 +61,6 @@ const Index = () => {
       description: "Full ride-hailing app with real-time GPS tracking, payment integration, and admin dashboard. Built with Flutter, fully QA tested on Android and iOS.",
       image: wabiRideImage,
       technologies: ["Flutter", "Dart", "Firebase", "Google Maps API", "QA Testing"],
-      githubUrl: "https://github.com/ejezievictor/in-ride",
     },
     {
       title: "Be Good App",
@@ -500,7 +499,7 @@ const Index = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="font-poppins font-bold text-xl shimmer-text mb-2">Victor Ejezie</div>
           <p className="text-muted-foreground font-inter text-sm">
-            © 2026 Victor Ejezie · Built with React & Tailwind CSS
+            © 2026 Victor Ejezie
           </p>
         </div>
       </footer>
