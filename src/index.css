@@ -2,136 +2,259 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
-
 @layer base {
   :root {
-    /* Dark Portfolio Theme */
     --background: 222 25% 4%;
     --foreground: 0 0% 95%;
-
     --card: 222 25% 6%;
     --card-foreground: 0 0% 95%;
-
     --popover: 222 25% 6%;
     --popover-foreground: 0 0% 95%;
-
-    /* Neon Blue Primary */
     --primary: 191 100% 50%;
     --primary-foreground: 222 25% 4%;
-
-    /* Electric Purple Secondary */
     --secondary: 270 100% 65%;
     --secondary-foreground: 0 0% 95%;
-
     --muted: 222 25% 8%;
     --muted-foreground: 0 0% 65%;
-
-    /* Neon Purple Accent */
     --accent: 270 100% 65%;
     --accent-foreground: 222 25% 4%;
-
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
-
     --border: 222 25% 12%;
     --input: 222 25% 8%;
     --ring: 191 100% 50%;
-
     --radius: 0.75rem;
-    
-    /* Custom Portfolio Colors */
-    --neon-blue: 191 100% 50%;
-    --neon-purple: 270 100% 65%;
-    --dark-surface: 222 25% 6%;
-    --darker-surface: 222 25% 4%;
-    
-    /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(191 100% 50%), hsl(270 100% 65%));
-    --gradient-hero: linear-gradient(135deg, hsl(191 100% 50% / 0.1), hsl(270 100% 65% / 0.1));
-    --gradient-card: linear-gradient(135deg, hsl(222 25% 6%), hsl(222 25% 8%));
-    
-    /* Shadows */
-    --shadow-neon: 0 0 20px hsl(191 100% 50% / 0.3), 0 0 40px hsl(191 100% 50% / 0.1);
-    --shadow-purple: 0 0 20px hsl(270 100% 65% / 0.3), 0 0 40px hsl(270 100% 65% / 0.1);
-    --shadow-card: 0 10px 30px -10px hsl(222 25% 0% / 0.3);
-    
-    /* Animations */
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
-
-  /* Portfolio uses dark theme by default */
 }
 
 @layer base {
-  * {
-    @apply border-border;
-  }
-
+  * { @apply border-border; }
   body {
     @apply bg-background text-foreground font-inter overflow-x-hidden;
+    cursor: none;
   }
-  
-  html {
-    scroll-behavior: smooth;
-  }
+  html { scroll-behavior: smooth; }
 }
 
+/* ── Fonts ───────────────────────────────────────────────── */
 @layer components {
-  /* Typography */
-  .font-poppins {
-    font-family: 'Poppins', sans-serif;
-  }
-  
-  .font-inter {
-    font-family: 'Inter', sans-serif;
-  }
-  
-  /* Gradient Text */
+  .font-poppins { font-family: 'Poppins', sans-serif; }
+  .font-inter   { font-family: 'Inter', sans-serif; }
+
+  /* ── Gradient text ─────────────────────────────────────── */
   .gradient-text {
     @apply bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent;
   }
-  
-  /* Neon Glow Effects */
-  .neon-glow {
-    box-shadow: var(--shadow-neon);
+
+  /* ── Neon glow ─────────────────────────────────────────── */
+  .neon-glow   { box-shadow: 0 0 20px hsl(191 100% 50% / 0.4), 0 0 60px hsl(191 100% 50% / 0.15); }
+  .purple-glow { box-shadow: 0 0 20px hsl(270 100% 65% / 0.4), 0 0 60px hsl(270 100% 65% / 0.15); }
+
+  /* ── Animated gradient border ──────────────────────────── */
+  .gradient-border {
+    position: relative;
   }
-  
-  .purple-glow {
-    box-shadow: var(--shadow-purple);
+  .gradient-border::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    background: linear-gradient(135deg, hsl(191 100% 50%), hsl(270 100% 65%), hsl(191 100% 50%));
+    background-size: 200% 200%;
+    animation: borderSpin 4s linear infinite;
+    z-index: -1;
   }
-  
-  /* Animations */
+
+  /* ── Glitch effect ─────────────────────────────────────── */
+  .glitch {
+    position: relative;
+  }
+  .glitch::before,
+  .glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: transparent;
+    clip: rect(0, 0, 0, 0);
+  }
+  .glitch::before {
+    left: 2px;
+    text-shadow: -2px 0 hsl(270 100% 65%);
+    animation: glitch1 3s infinite linear alternate-reverse;
+  }
+  .glitch::after {
+    left: -2px;
+    text-shadow: 2px 0 hsl(191 100% 50%);
+    animation: glitch2 3s infinite linear alternate-reverse;
+  }
+
+  /* ── Floating shapes ───────────────────────────────────── */
+  .float-slow  { animation: floatY 6s ease-in-out infinite; }
+  .float-med   { animation: floatY 4s ease-in-out infinite 1s; }
+  .float-fast  { animation: floatY 3s ease-in-out infinite 0.5s; }
+
+  /* ── Stat card ─────────────────────────────────────────── */
+  .stat-card {
+    @apply bg-card/40 backdrop-blur-sm border border-border/50 rounded-2xl p-6 text-center
+           hover:border-primary/40 transition-all duration-300;
+  }
+  .stat-card:hover {
+    box-shadow: 0 0 30px hsl(191 100% 50% / 0.15);
+    transform: translateY(-4px);
+  }
+
+  /* ── Skill pill ────────────────────────────────────────── */
+  .skill-pill {
+    @apply px-3 py-1.5 rounded-full text-sm font-inter border border-primary/20
+           bg-primary/5 text-primary/80 transition-all duration-300;
+  }
+  .skill-pill:hover {
+    @apply bg-primary/15 border-primary/50 text-primary;
+    box-shadow: 0 0 12px hsl(191 100% 50% / 0.2);
+  }
+
+  /* ── Section heading underline ─────────────────────────── */
+  .section-title {
+    position: relative;
+    display: inline-block;
+  }
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, hsl(191 100% 50%), hsl(270 100% 65%));
+    animation: widthPulse 2s ease-in-out infinite;
+  }
+
+  /* ── Typing cursor ─────────────────────────────────────── */
   .typing-cursor::after {
     content: '|';
     @apply text-primary animate-pulse;
   }
-  
-  /* Scroll Animations */
-  .fade-in-up {
-    @apply opacity-0 translate-y-8 transition-all duration-700 ease-out;
-  }
-  
-  .fade-in-up.animate {
-    @apply opacity-100 translate-y-0;
-  }
+
+  /* ── Scroll animation base ─────────────────────────────── */
+  .fade-in-up { @apply opacity-0 translate-y-8 transition-all duration-700 ease-out; }
+  .fade-in-up.animate { @apply opacity-100 translate-y-0; }
+}
+
+/* ── Keyframes ───────────────────────────────────────────── */
+@keyframes borderSpin {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes floatY {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-18px); }
+}
+
+@keyframes glitch1 {
+  0%  { clip: rect(20px, 999px, 40px, 0); }
+  20% { clip: rect(60px, 999px, 80px, 0); }
+  40% { clip: rect(5px,  999px, 25px, 0); }
+  60% { clip: rect(90px, 999px, 110px, 0); }
+  80% { clip: rect(35px, 999px, 55px, 0); }
+  100%{ clip: rect(70px, 999px, 90px, 0); }
+}
+
+@keyframes glitch2 {
+  0%  { clip: rect(50px, 999px, 70px, 0); }
+  20% { clip: rect(10px, 999px, 30px, 0); }
+  40% { clip: rect(80px, 999px, 100px, 0); }
+  60% { clip: rect(25px, 999px, 45px, 0); }
+  80% { clip: rect(65px, 999px, 85px, 0); }
+  100%{ clip: rect(15px, 999px, 35px, 0); }
+}
+
+@keyframes widthPulse {
+  0%, 100% { width: 60px; opacity: 1; }
+  50%       { width: 90px; opacity: 0.7; }
+}
+
+@keyframes orb1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(60px, -40px) scale(1.1); }
+  66%       { transform: translate(-40px, 30px) scale(0.9); }
+}
+
+@keyframes orb2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(-50px, 40px) scale(0.9); }
+  66%       { transform: translate(40px, -30px) scale(1.1); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes neonPulse {
+  0%, 100% { box-shadow: 0 0 10px hsl(191 100% 50% / 0.3), 0 0 20px hsl(191 100% 50% / 0.1); }
+  50%       { box-shadow: 0 0 20px hsl(191 100% 50% / 0.6), 0 0 40px hsl(191 100% 50% / 0.2); }
+}
+
+@keyframes scanLine {
+  0%   { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+/* ── Animated orbs for hero ──────────────────────────────── */
+.orb-1 {
+  animation: orb1 12s ease-in-out infinite;
+}
+.orb-2 {
+  animation: orb2 10s ease-in-out infinite;
+}
+
+/* ── Shimmer text ────────────────────────────────────────── */
+.shimmer-text {
+  background: linear-gradient(
+    90deg,
+    hsl(191 100% 50%),
+    hsl(270 100% 65%),
+    hsl(191 100% 80%),
+    hsl(270 100% 65%),
+    hsl(191 100% 50%)
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 4s linear infinite;
+}
+
+/* ── Neon pulse on timeline dot ──────────────────────────── */
+.neon-dot {
+  animation: neonPulse 2s ease-in-out infinite;
+}
+
+/* ── Grid background ─────────────────────────────────────── */
+.bg-grid {
+  background-image:
+    linear-gradient(hsl(191 100% 50% / 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, hsl(191 100% 50% / 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+/* ── Scrollbar ───────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: hsl(222 25% 4%); }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(hsl(191 100% 50%), hsl(270 100% 65%));
+  border-radius: 3px;
 }

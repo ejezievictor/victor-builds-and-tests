@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Download, ChevronDown, MapPin, Calendar, Trophy, Award } from "lucide-react";
+import { Download, ChevronDown, MapPin, Calendar, Trophy, Award, Briefcase, Code2, CheckCircle2 } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import TypingText from "@/components/TypingText";
 import ScrollAnimation from "@/components/ScrollAnimation";
@@ -8,8 +8,9 @@ import TechSkills from "@/components/TechSkills";
 import ProjectCard from "@/components/ProjectCard";
 import ExperienceTimeline from "@/components/ExperienceTimeline";
 import ContactForm from "@/components/ContactForm";
+import Particles from "@/components/Particles";
+import CustomCursor from "@/components/CustomCursor";
 
-// Import project images
 import wabiRideImage from "@/assets/wabi-ride-mockup.jpg";
 import winDrawLoseImage from "@/assets/win-draw-lose-real.jpg";
 import beGoodImage from "@/assets/be-good-mockup.jpg";
@@ -18,9 +19,15 @@ import lupImage from "@/assets/lup-yipeebet.jpg";
 import victorProfileImage from "@/assets/victor-profile-real.jpg";
 
 const Index = () => {
-  const scrollToProjects = () => {
+  const scrollToProjects = () =>
     document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
-  };
+
+  const stats = [
+    { icon: Calendar,     value: "3",  label: "Years Experience" },
+    { icon: Briefcase,    value: "4",  label: "Companies" },
+    { icon: Code2,        value: "5",  label: "Products Shipped" },
+    { icon: CheckCircle2, value: "1",  label: "Certification" },
+  ];
 
   const projects = [
     {
@@ -32,28 +39,28 @@ const Index = () => {
     },
     {
       title: "AFTECH (LKY7BET)",
-      description: "High-traffic gaming platform with sports betting, casino games, and live gaming features. Led QA testing and product management for successful launches with comprehensive testing protocols.",
+      description: "High-traffic gaming platform with sports betting, casino games, and live gaming. Led QA testing and product management for successful launches.",
       image: aftechImage,
       technologies: ["QA Testing", "Product Management", "Jira", "API Testing"],
       liveUrl: "",
     },
     {
       title: "Lup Investment (YipeeBet)",
-      description: "Investment and gaming platform with aviator games and betting features. Performed comprehensive manual and API testing ensuring platform reliability before launch.",
+      description: "Investment and gaming platform with aviator games and betting features. Comprehensive manual and API testing ensuring platform reliability.",
       image: lupImage,
       technologies: ["Manual Testing", "API Testing", "Postman", "Jira"],
       liveUrl: "",
     },
     {
       title: "Wabi Ride",
-      description: "A comprehensive ride-hailing application with real-time GPS tracking, payment integration, and admin dashboard. Built with Flutter and fully QA tested across Android and iOS.",
+      description: "Full ride-hailing app with real-time GPS tracking, payment integration, and admin dashboard. Built with Flutter, fully QA tested on Android and iOS.",
       image: wabiRideImage,
       technologies: ["Flutter", "Dart", "Firebase", "Google Maps API", "QA Testing"],
       liveUrl: "https://github.com/ejezievictor/in-ride",
     },
     {
       title: "Be Good App",
-      description: "A wellness and productivity application designed to help users build better habits and achieve their goals through intuitive design and motivational features.",
+      description: "Wellness and productivity app helping users build better habits through intuitive design, goal tracking, and motivational features.",
       image: beGoodImage,
       technologies: ["Flutter", "Dart", "Firebase"],
       liveUrl: "",
@@ -119,19 +126,33 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <CustomCursor />
       <Navigation />
 
-      {/* Hero Section */}
-      <section id="hero" className="min-h-screen flex items-center relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,hsl(var(--primary)/0.1),transparent_70%)] bg-[radial-gradient(circle_at_70%_80%,hsl(var(--secondary)/0.1),transparent_70%)]" />
+      {/* ── HERO ────────────────────────────────────────────── */}
+      <section id="hero" className="min-h-screen flex items-center relative overflow-hidden bg-grid">
+        {/* Particle canvas */}
+        <Particles />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-16">
+        {/* Animated orbs */}
+        <div className="orb-1 absolute top-1/4 left-1/4 w-96 h-96 rounded-full pointer-events-none"
+          style={{ background: "radial-gradient(circle, hsl(191 100% 50% / 0.08), transparent 70%)", filter: "blur(40px)" }} />
+        <div className="orb-2 absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full pointer-events-none"
+          style={{ background: "radial-gradient(circle, hsl(270 100% 65% / 0.08), transparent 70%)", filter: "blur(40px)" }} />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-16 w-full">
           <div className="text-center max-w-4xl mx-auto">
+
             <ScrollAnimation>
-              <h1 className="font-poppins font-bold text-5xl sm:text-6xl lg:text-7xl mb-6">
+              <div className="inline-block mb-4 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/5 text-primary text-sm font-inter">
+                👋 Available for QA Engineer roles
+              </div>
+            </ScrollAnimation>
+
+            <ScrollAnimation delay={100}>
+              <h1 className="font-poppins font-bold text-5xl sm:text-6xl lg:text-8xl mb-6 leading-tight">
                 <span className="text-foreground">Hi, I'm </span>
-                <span className="gradient-text">Victor Ejezie</span>
+                <span className="shimmer-text">Victor Ejezie</span>
               </h1>
             </ScrollAnimation>
 
@@ -145,54 +166,65 @@ const Index = () => {
               </div>
             </ScrollAnimation>
 
-            <ScrollAnimation delay={600}>
+            <ScrollAnimation delay={500}>
               <p className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto font-inter leading-relaxed">
                 QA Engineer specializing in manual & automation testing, API testing,
-                and mobile development with Flutter. 3 years of experience shipping
-                reliable software across gaming, sports prediction, and ride-hailing products.
+                and mobile development with Flutter. 3 years shipping reliable software
+                across gaming, sports prediction, and ride-hailing products.
               </p>
             </ScrollAnimation>
 
-            <ScrollAnimation delay={900}>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <ScrollAnimation delay={700}>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
                 <Button
                   size="lg"
                   onClick={scrollToProjects}
-                  className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-3 text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300"
+                  className="relative overflow-hidden bg-primary text-background px-8 py-3 text-lg font-medium group"
                 >
-                  View My Work
+                  <span className="relative z-10">View My Work</span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-primary to-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-border hover:border-primary text-foreground hover:text-primary px-8 py-3 text-lg font-medium"
+                <Button size="lg" variant="outline"
+                  className="border-primary/40 hover:border-primary text-foreground hover:text-primary px-8 py-3 text-lg font-medium hover:bg-primary/5 transition-all duration-300"
                   asChild
                 >
-                  <a
-                    href="https://drive.google.com/uc?export=download&id=10gwo3RyC_6MaLpbnv4s3inp6yD_vu8gB"
-                    download="Victor_Ejezie_CV.pdf"
-                  >
+                  <a href="https://drive.google.com/uc?export=download&id=10gwo3RyC_6MaLpbnv4s3inp6yD_vu8gB" download="Victor_Ejezie_CV.pdf">
                     <Download className="w-5 h-5 mr-2" />
                     Download CV
                   </a>
                 </Button>
               </div>
             </ScrollAnimation>
+
+            {/* Stats row */}
+            <ScrollAnimation delay={900}>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl mx-auto">
+                {stats.map((stat, i) => (
+                  <div key={i} className="stat-card">
+                    <stat.icon className="w-5 h-5 text-primary mx-auto mb-2" />
+                    <div className="text-3xl font-poppins font-bold shimmer-text">{stat.value}</div>
+                    <div className="text-xs text-muted-foreground font-inter mt-1">{stat.label}</div>
+                  </div>
+                ))}
+              </div>
+            </ScrollAnimation>
+
           </div>
         </div>
 
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce z-10">
           <ChevronDown className="w-6 h-6 text-primary" />
         </div>
       </section>
 
-      {/* About Section */}
-      <section id="about" className="py-20 bg-card/20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* ── ABOUT ───────────────────────────────────────────── */}
+      <section id="about" className="py-24 bg-card/20 relative overflow-hidden">
+        <div className="absolute inset-0 bg-grid opacity-30" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <ScrollAnimation>
             <div className="text-center mb-16">
-              <h2 className="font-poppins font-bold text-4xl mb-4 gradient-text">About Me</h2>
-              <p className="text-muted-foreground text-lg font-inter max-w-2xl mx-auto">
+              <h2 className="font-poppins font-bold text-4xl mb-4 section-title gradient-text">About Me</h2>
+              <p className="text-muted-foreground text-lg font-inter max-w-2xl mx-auto mt-6">
                 Get to know the engineer behind the quality
               </p>
             </div>
@@ -200,47 +232,43 @@ const Index = () => {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <ScrollAnimation>
-              <div className="relative">
+              <div className="relative group">
+                <div className="absolute -inset-1 bg-gradient-to-r from-primary to-secondary rounded-2xl blur opacity-30 group-hover:opacity-60 transition-opacity duration-500" />
                 <img
                   src={victorProfileImage}
                   alt="Victor Ejezie"
-                  className="w-80 h-80 object-cover rounded-2xl mx-auto shadow-2xl"
+                  className="relative w-80 h-80 object-cover rounded-2xl mx-auto shadow-2xl group-hover:scale-[1.02] transition-transform duration-500"
                 />
-                <div className="absolute -inset-1 bg-gradient-to-r from-primary to-secondary rounded-2xl blur opacity-20" />
               </div>
             </ScrollAnimation>
 
             <ScrollAnimation delay={200}>
               <div className="space-y-6">
-                <div className="flex items-center gap-3 text-muted-foreground">
-                  <MapPin className="w-5 h-5 text-primary" />
-                  <span className="font-inter">Lagos, Nigeria</span>
-                </div>
+                {[
+                  { icon: MapPin,    text: "Lagos, Nigeria" },
+                  { icon: Calendar,  text: "3 Years Experience" },
+                  { icon: Trophy,    text: "QA Engineer | Flutter Developer | Product Manager" },
+                ].map(({ icon: Icon, text }, i) => (
+                  <div key={i} className="flex items-center gap-3 text-muted-foreground group">
+                    <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors duration-300">
+                      <Icon className="w-5 h-5 text-primary" />
+                    </div>
+                    <span className="font-inter group-hover:text-foreground transition-colors duration-300">{text}</span>
+                  </div>
+                ))}
 
-                <div className="flex items-center gap-3 text-muted-foreground">
-                  <Calendar className="w-5 h-5 text-primary" />
-                  <span className="font-inter">3 Years Experience</span>
-                </div>
-
-                <div className="flex items-center gap-3 text-muted-foreground">
-                  <Trophy className="w-5 h-5 text-primary" />
-                  <span className="font-inter">QA Engineer | Flutter Developer | Product Manager</span>
-                </div>
-
-                <div className="prose prose-invert max-w-none">
+                <div className="space-y-4 pt-2">
                   <p className="text-muted-foreground font-inter leading-relaxed text-lg">
                     I'm a QA Engineer with a background in Flutter development — which means I don't
                     just find bugs, I understand why they happen. I've worked on gaming platforms,
                     sports prediction apps, and ride-hailing products, always focused on shipping
                     software that works reliably for real users.
                   </p>
-
                   <p className="text-muted-foreground font-inter leading-relaxed text-lg">
                     I specialise in manual testing, automation (Appium, Selenium), and API testing
                     using Postman. I've also led cross-functional teams as a Product Manager, giving
                     me a full view of how products are built and delivered.
                   </p>
-
                   <p className="text-muted-foreground font-inter leading-relaxed text-lg">
                     Outside work, you'll find me playing chess, football, or volleyball — strategy
                     and teamwork aren't just for the office.
@@ -252,35 +280,30 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Skills Section */}
-      <section id="skills" className="py-20 bg-gradient-to-br from-card/10 to-primary/5 relative overflow-hidden">
-        <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
+      {/* ── SKILLS ──────────────────────────────────────────── */}
+      <section id="skills" className="py-24 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/3 to-secondary/3" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <ScrollAnimation>
             <div className="text-center mb-20">
-              <div className="inline-block">
-                <h2 className="font-poppins font-bold text-5xl mb-6 gradient-text relative">
-                  Skills & Expertise
-                  <div className="absolute -inset-2 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-2xl blur-xl -z-10 animate-pulse"></div>
-                </h2>
-              </div>
-              <p className="text-muted-foreground text-xl font-inter max-w-3xl mx-auto leading-relaxed">
+              <h2 className="font-poppins font-bold text-5xl mb-4 section-title gradient-text">Skills & Expertise</h2>
+              <p className="text-muted-foreground text-xl font-inter max-w-3xl mx-auto leading-relaxed mt-8">
                 Technologies and tools I use to build and test exceptional digital products
               </p>
             </div>
           </ScrollAnimation>
-
           <TechSkills />
         </div>
       </section>
 
-      {/* Projects Section */}
-      <section id="projects" className="py-20 bg-card/20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* ── PROJECTS ────────────────────────────────────────── */}
+      <section id="projects" className="py-24 bg-card/20 relative">
+        <div className="absolute inset-0 bg-grid opacity-20" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <ScrollAnimation>
             <div className="text-center mb-16">
-              <h2 className="font-poppins font-bold text-4xl mb-4 gradient-text">Featured Projects</h2>
-              <p className="text-muted-foreground text-lg font-inter max-w-2xl mx-auto">
+              <h2 className="font-poppins font-bold text-4xl mb-4 section-title gradient-text">Featured Projects</h2>
+              <p className="text-muted-foreground text-lg font-inter max-w-2xl mx-auto mt-6">
                 Products I've built, tested, and shipped
               </p>
             </div>
@@ -288,77 +311,75 @@ const Index = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.map((project, index) => (
-              <ProjectCard
-                key={project.title}
-                {...project}
-                delay={index * 200}
-              />
+              <ProjectCard key={project.title} {...project} delay={index * 150} />
             ))}
           </div>
         </div>
       </section>
 
-      {/* Experience Section */}
-      <section id="experience" className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* ── EXPERIENCE ──────────────────────────────────────── */}
+      <section id="experience" className="py-24 relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-full">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full pointer-events-none"
+            style={{ background: "radial-gradient(circle, hsl(191 100% 50% / 0.04), transparent 70%)" }} />
+        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <ScrollAnimation>
             <div className="text-center mb-16">
-              <h2 className="font-poppins font-bold text-4xl mb-4 gradient-text">Experience</h2>
-              <p className="text-muted-foreground text-lg font-inter max-w-2xl mx-auto">
+              <h2 className="font-poppins font-bold text-4xl mb-4 section-title gradient-text">Experience</h2>
+              <p className="text-muted-foreground text-lg font-inter max-w-2xl mx-auto mt-6">
                 My professional journey and key achievements
               </p>
             </div>
           </ScrollAnimation>
-
           <div className="max-w-4xl mx-auto">
             <ExperienceTimeline experiences={experiences} />
           </div>
         </div>
       </section>
 
-      {/* Certifications Section */}
-      <section id="certifications" className="py-20 bg-card/20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* ── CERTIFICATIONS ──────────────────────────────────── */}
+      <section id="certifications" className="py-24 bg-card/20 relative overflow-hidden">
+        <div className="absolute inset-0 bg-grid opacity-20" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <ScrollAnimation>
             <div className="text-center mb-16">
-              <h2 className="font-poppins font-bold text-4xl mb-4 gradient-text">Certifications</h2>
-              <p className="text-muted-foreground text-lg font-inter max-w-2xl mx-auto">
+              <h2 className="font-poppins font-bold text-4xl mb-4 section-title gradient-text">Certifications</h2>
+              <p className="text-muted-foreground text-lg font-inter max-w-2xl mx-auto mt-6">
                 Continuous learning and professional development
               </p>
             </div>
           </ScrollAnimation>
 
-          <div className="max-w-2xl mx-auto">
+          <div className="max-w-2xl mx-auto space-y-4">
             {certifications.map((cert, index) => (
               <ScrollAnimation key={index} delay={index * 200}>
-                <a
-                  href={cert.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block"
-                >
-                  <Card className="bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/30 transition-all duration-300 hover:scale-[1.02]">
-                    <CardContent className="p-6">
-                      <div className="flex items-start gap-4">
-                        <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center shrink-0">
-                          <Award className="w-6 h-6 text-primary" />
-                        </div>
-                        <div className="flex-1">
-                          <h3 className="font-poppins font-semibold text-lg text-foreground mb-1">
-                            {cert.title}
-                          </h3>
-                          <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3 text-sm">
-                            <span className="text-primary font-medium">{cert.issuer}</span>
-                            <span className="text-muted-foreground">·</span>
-                            <span className="text-muted-foreground">{cert.date}</span>
+                <a href={cert.url} target="_blank" rel="noopener noreferrer" className="block group">
+                  <div className="relative">
+                    <div className="absolute -inset-0.5 bg-gradient-to-r from-primary to-secondary rounded-xl opacity-0 group-hover:opacity-60 blur transition-opacity duration-500" />
+                    <Card className="relative bg-card/50 backdrop-blur-sm border-border/50 group-hover:border-primary/30 transition-all duration-300">
+                      <CardContent className="p-6">
+                        <div className="flex items-start gap-4">
+                          <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-primary/20 transition-colors duration-300 neon-dot">
+                            <Award className="w-7 h-7 text-primary" />
                           </div>
-                          <p className="text-muted-foreground text-xs mt-2 font-inter">
-                            Credential ID: {cert.credentialId}
-                          </p>
+                          <div className="flex-1">
+                            <h3 className="font-poppins font-semibold text-lg text-foreground mb-1 group-hover:text-primary transition-colors duration-300">
+                              {cert.title}
+                            </h3>
+                            <div className="flex flex-wrap items-center gap-2 text-sm">
+                              <span className="text-primary font-medium">{cert.issuer}</span>
+                              <span className="text-muted-foreground">·</span>
+                              <span className="text-muted-foreground">{cert.date}</span>
+                            </div>
+                            <p className="text-muted-foreground text-xs mt-2 font-inter">
+                              Credential ID: {cert.credentialId}
+                            </p>
+                          </div>
                         </div>
-                      </div>
-                    </CardContent>
-                  </Card>
+                      </CardContent>
+                    </Card>
+                  </div>
                 </a>
               </ScrollAnimation>
             ))}
@@ -366,30 +387,32 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section id="contact" className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* ── CONTACT ─────────────────────────────────────────── */}
+      <section id="contact" className="py-24 relative overflow-hidden">
+        <div className="absolute bottom-0 left-0 w-full h-full">
+          <div className="absolute bottom-0 right-0 w-96 h-96 rounded-full pointer-events-none"
+            style={{ background: "radial-gradient(circle, hsl(270 100% 65% / 0.05), transparent 70%)", filter: "blur(60px)" }} />
+        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <ScrollAnimation>
             <div className="text-center mb-16">
-              <h2 className="font-poppins font-bold text-4xl mb-4 gradient-text">Let's Work Together</h2>
-              <p className="text-muted-foreground text-lg font-inter max-w-2xl mx-auto">
+              <h2 className="font-poppins font-bold text-4xl mb-4 section-title gradient-text">Let's Work Together</h2>
+              <p className="text-muted-foreground text-lg font-inter max-w-2xl mx-auto mt-6">
                 Have a project in mind? Let's discuss how we can bring your ideas to life
               </p>
             </div>
           </ScrollAnimation>
-
           <ContactForm />
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="py-12 border-t border-border/50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <p className="text-muted-foreground font-inter">
-              © 2026 Victor Ejezie. Built with React & Tailwind CSS.
-            </p>
-          </div>
+      {/* ── FOOTER ──────────────────────────────────────────── */}
+      <footer className="py-12 border-t border-border/30 relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="font-poppins font-bold text-xl shimmer-text mb-2">Victor Ejezie</div>
+          <p className="text-muted-foreground font-inter text-sm">
+            © 2026 Victor Ejezie · Built with React & Tailwind CSS
+          </p>
         </div>
       </footer>
     </div>
