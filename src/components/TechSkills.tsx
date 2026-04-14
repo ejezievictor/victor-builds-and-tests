@@ -1,50 +1,50 @@
-import { Code, Smartphone, Database, Globe, TestTube, Users } from "lucide-react";
+import { Code, Smartphone, Database, Globe, TestTube, Zap } from "lucide-react";
 import ScrollAnimation from "./ScrollAnimation";
 
 const TechSkills = () => {
   const skillCategories = [
     {
+      title: "QA & Testing",
+      icon: TestTube,
+      color: "from-indigo-500/20 to-blue-500/20",
+      iconColor: "text-indigo-400",
+      skills: ["Manual Testing", "Test Case Design", "Bug Tracking", "Regression Testing", "API Testing", "Mobile Testing", "UAT"],
+    },
+    {
+      title: "Automation",
+      icon: Zap,
+      color: "from-yellow-500/20 to-orange-500/20",
+      iconColor: "text-yellow-400",
+      skills: ["Appium", "Selenium", "CI/CD Pipelines", "Test Automation"],
+    },
+    {
       title: "Mobile Development",
       icon: Smartphone,
       color: "from-blue-500/20 to-cyan-500/20",
       iconColor: "text-blue-400",
-      skills: ["Flutter", "Dart", "Firebase", "REST APIs", "SQLite"]
+      skills: ["Flutter", "Dart", "Firebase", "REST APIs", "SQLite", "Google Maps API"],
     },
     {
       title: "Web Technologies",
       icon: Globe,
       color: "from-green-500/20 to-emerald-500/20",
       iconColor: "text-green-400",
-      skills: ["JavaScript", "HTML5", "CSS3", "WordPress", "Responsive Design"]
+      skills: ["JavaScript", "HTML5", "CSS3", "Responsive Design"],
     },
     {
-      title: "Development Tools",
+      title: "Tools & Platforms",
       icon: Code,
       color: "from-purple-500/20 to-pink-500/20",
       iconColor: "text-purple-400",
-      skills: ["Git", "VS Code", "Android Studio", "Figma", "Video Editing"]
+      skills: ["Postman", "Jira", "Git", "GitHub", "Android Studio", "Figma", "VS Code", "Trello"],
     },
     {
-      title: "Data & Analytics",
+      title: "Product & Management",
       icon: Database,
-      color: "from-orange-500/20 to-red-500/20",
-      iconColor: "text-orange-400",
-      skills: ["Excel Advanced", "VLOOKUP", "Pivot Tables", "Reporting"]
-    },
-    {
-      title: "Quality Assurance",
-      icon: TestTube,
-      color: "from-indigo-500/20 to-blue-500/20",
-      iconColor: "text-indigo-400",
-      skills: ["Manual Testing", "Test Planning", "Bug Tracking", "Quality Control", "User Testing"]
-    },
-    {
-      title: "Project Management",
-      icon: Users,
       color: "from-teal-500/20 to-green-500/20",
       iconColor: "text-teal-400",
-      skills: ["Team Leadership", "Agile", "Product Design", "Decision Making", "Communication"]
-    }
+      skills: ["Product Management", "Agile/Scrum", "Team Leadership", "Cross-functional Collaboration"],
+    },
   ];
 
   return (
@@ -62,7 +62,7 @@ const TechSkills = () => {
                   {category.title}
                 </h3>
               </div>
-              
+
               <div className="space-y-3">
                 {category.skills.map((skill, skillIndex) => (
                   <ScrollAnimation key={skill} delay={categoryIndex * 100 + skillIndex * 50}>
@@ -75,7 +75,7 @@ const TechSkills = () => {
                   </ScrollAnimation>
                 ))}
               </div>
-              
+
               <div className="mt-6 pt-4 border-t border-border/30">
                 <div className="flex justify-center">
                   <div className="w-16 h-1 bg-gradient-to-r from-primary to-secondary rounded-full opacity-50 group-hover:opacity-100 group-hover:w-20 transition-all duration-500"></div>
