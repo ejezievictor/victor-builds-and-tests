@@ -243,9 +243,7 @@ const Index = () => {
 
             {/* Right: terminal window */}
             <ScrollAnimation delay={400}>
-              <div className="hidden lg:block">
-                <TerminalWindow />
-              </div>
+              <TerminalWindow />
             </ScrollAnimation>
 
           </div>
