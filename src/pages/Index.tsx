@@ -140,6 +140,13 @@ const Index = () => {
 
   const certifications = [
     {
+      title: "Master Selenium WebDriver-Java: Scratch to Advance + CI/CD",
+      issuer: "Udemy",
+      date: "April 2026",
+      credentialId: "UC-a6e62429-2755-4a9c-95c5-05ebb33088fb",
+      url: "https://ude.my/UC-a6e62429-2755-4a9c-95c5-05ebb33088fb",
+    },
+    {
       title: "Software Testing Masterclass (2026) — From Novice to Expert",
       issuer: "Udemy",
       date: "April 2026",
