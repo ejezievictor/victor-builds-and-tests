@@ -15,7 +15,7 @@ const TechSkills = () => {
       icon: Zap,
       color: "from-yellow-500/20 to-orange-500/20",
       iconColor: "text-yellow-400",
-      skills: ["Appium", "Selenium", "CI/CD Pipelines", "Test Automation"],
+      skills: ["Selenium WebDriver", "Appium", "TestNG", "Maven", "Jenkins", "Selenium Grid", "Docker", "ExtentReports", "GitHub Webhooks"],
     },
     {
       title: "Mobile Development",
