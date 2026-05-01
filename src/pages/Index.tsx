@@ -23,6 +23,7 @@ import beGoodImage from "@/assets/be-good-mockup.jpg";
 import aftechImage from "@/assets/aftech-lky7bet.jpg";
 import lupImage from "@/assets/lup-yipeebet.jpg";
 import victorProfileImage from "@/assets/victor-profile-real.jpg";
+import socrifyImage from "@/assets/socrify-homescreen.jpg";
 
 const Index = () => {
   const [loaded, setLoaded] = useState(false);
@@ -39,9 +40,9 @@ const Index = () => {
 
   const projects = [
     {
-      title: "Reflect App — AI Mobile QA",
-      description: "Comprehensive manual QA test plan covering 16 modules and 100+ test cases for an AI-powered mental wellness app. Tested voice AI, subscriptions, on-device Gemini Nano, and cross-platform edge cases on Android & iOS.",
-      image: winDrawLoseImage,
+      title: "Socrify — AI Wellness App QA",
+      description: "Comprehensive manual QA test plan covering 16 modules and 100+ test cases for Socrify, an AI-powered mental wellness app. Tested Socratic AI chat, voice mode, subscriptions, on-device AI fallback, and cross-platform edge cases on Android & iOS.",
+      image: socrifyImage,
       technologies: ["Manual Testing", "Mobile Testing", "Android", "iOS", "RevenueCat", "StoreKit2", "Gemini Nano"],
     },
     {
