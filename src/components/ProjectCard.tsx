@@ -71,7 +71,9 @@ const ProjectCard = ({
           {/* Spotlight overlay */}
           <div className="spotlight absolute inset-0 z-10 pointer-events-none rounded-xl transition-all duration-200" />
 
-          <div className={`relative overflow-hidden flex items-center justify-center bg-card/60 ${portrait ? "h-72" : ""}`}>
+          <div className={`relative overflow-hidden flex items-center justify-center ${portrait ? "h-72" : ""}`}
+            style={portrait ? { background: "linear-gradient(135deg, #0a1628 0%, #0d2137 40%, #0a2a3a 70%, #061420 100%)" } : {}}
+          >
             <img
               src={image}
               alt={title}
