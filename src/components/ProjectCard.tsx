@@ -13,6 +13,7 @@ interface ProjectCardProps {
   liveUrl?: string;
   githubUrl?: string;
   delay?: number;
+  portrait?: boolean;
 }
 
 const ProjectCard = ({
@@ -23,6 +24,7 @@ const ProjectCard = ({
   liveUrl,
   githubUrl,
   delay = 0,
+  portrait = false,
 }: ProjectCardProps) => {
   const cardRef = useRef<HTMLDivElement>(null);
 
@@ -69,11 +71,11 @@ const ProjectCard = ({
           {/* Spotlight overlay */}
           <div className="spotlight absolute inset-0 z-10 pointer-events-none rounded-xl transition-all duration-200" />
 
-          <div className="relative overflow-hidden">
+          <div className={`relative overflow-hidden flex items-center justify-center bg-card/60 ${portrait ? "h-72" : ""}`}>
             <img
               src={image}
               alt={title}
-              className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
+              className={`transition-transform duration-500 group-hover:scale-105 ${portrait ? "h-72 w-auto object-contain" : "w-full h-48 object-cover group-hover:scale-110"}`}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-transparent" />
             <div className="absolute inset-0 bg-gradient-to-t from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />

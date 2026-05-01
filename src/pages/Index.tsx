@@ -44,6 +44,7 @@ const Index = () => {
       description: "Comprehensive manual QA test plan covering 16 modules and 100+ test cases for Socrify, an AI-powered mental wellness app. Tested Socratic AI chat, voice mode, subscriptions, on-device AI fallback, and cross-platform edge cases on Android & iOS.",
       image: socrifyImage,
       technologies: ["Manual Testing", "Mobile Testing", "Android", "iOS", "RevenueCat", "StoreKit2", "Gemini Nano"],
+      portrait: true,
     },
     {
       title: "Win Draw Lose",
