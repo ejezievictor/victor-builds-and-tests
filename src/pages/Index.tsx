@@ -32,9 +32,9 @@ const Index = () => {
 
   const stats = [
     { icon: Calendar,     value: "3",  label: "Years Experience" },
-    { icon: Briefcase,    value: "4",  label: "Companies" },
-    { icon: Code2,        value: "5",  label: "Products Shipped" },
-    { icon: CheckCircle2, value: "1",  label: "Certification" },
+    { icon: Briefcase,    value: "5",  label: "Companies" },
+    { icon: Code2,        value: "6",  label: "Products Shipped" },
+    { icon: CheckCircle2, value: "2",  label: "Certifications" },
   ];
 
   const projects = [
@@ -98,6 +98,18 @@ const Index = () => {
   ];
 
   const experiences = [
+    {
+      title: "QA Tester (Contract)",
+      company: "Socrify",
+      period: "Jan 2026 – Present",
+      description: [
+        "Authored a comprehensive manual QA test plan covering 16 modules and 100+ test cases for an AI-powered mental wellness app (Reflect App) on Android and iOS",
+        "Tested AI chat session flows, on-device AI responses, voice input/conversation mode, and cloud AI fallback behaviour across varied and edge-case inputs",
+        "Validated subscription and paywall flows including free user restrictions, premium feature activation, and purchase restoration",
+        "Documented defects with clear reproduction steps and verified fixes through structured retesting",
+      ],
+      current: true,
+    },
     {
       title: "Flutter Developer & QA Engineer (Contract)",
       company: "Win Draw Lose",
