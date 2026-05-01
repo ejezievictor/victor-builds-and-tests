@@ -39,6 +39,12 @@ const Index = () => {
 
   const projects = [
     {
+      title: "Reflect App — AI Mobile QA",
+      description: "Comprehensive manual QA test plan covering 16 modules and 100+ test cases for an AI-powered mental wellness app. Tested voice AI, subscriptions, on-device Gemini Nano, and cross-platform edge cases on Android & iOS.",
+      image: winDrawLoseImage,
+      technologies: ["Manual Testing", "Mobile Testing", "Android", "iOS", "RevenueCat", "StoreKit2", "Gemini Nano"],
+    },
+    {
       title: "Win Draw Lose",
       description: "Sports prediction platform focused on football analytics, user statistics, and match prediction tracking. Currently in active development.",
       image: winDrawLoseImage,
