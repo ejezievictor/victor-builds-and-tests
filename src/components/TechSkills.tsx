@@ -22,7 +22,7 @@ const TechSkills = () => {
       icon: Smartphone,
       color: "from-blue-500/20 to-cyan-500/20",
       iconColor: "text-blue-400",
-      skills: ["Flutter", "Dart", "Firebase", "REST APIs", "SQLite", "Google Maps API"],
+      skills: ["Flutter", "Dart", "Firebase", "REST APIs", "SQLite", "MySQL", "SQL", "Google Maps API"],
     },
     {
       title: "Web Technologies",
